@@ -14,7 +14,7 @@ def _check_ip(value: str) -> bool:
     Validates the str is a valid ip v4 address
     """
     try:
-        ip = ip_address(value)
+        ip = ip_address(value)  # noqa: F841
         return_value = True
     except ValueError:
         return_value = False
