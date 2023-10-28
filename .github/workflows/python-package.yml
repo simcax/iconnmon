@@ -41,3 +41,14 @@ jobs:
     - name: Test with pytest
       run: |
         poetry run pytest
+
+    services:
+      influx:
+        image: influxdb:2.7.3
+        env:
+          DOCKER_INFLUXDB_INIT_MODE: setup
+          DOCKER_INFLUXDB_INIT_USERNAME: ${{ secrets.INFLUX_USERNAME }}
+          DOCKER_INFLUXDB_INIT_PASSWORD: ${{ secrets.INFLUX_PASSWORD }}
+          DOCKER_INFLUXDB_INIT_ORG: iconnmon
+          DOCKER_INFLUXDB_INIT_BUCKET: iconnmonseries
+          DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${{ secrets.INFLUX_TOKEN }}
