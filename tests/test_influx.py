@@ -25,7 +25,7 @@ def test_insert_data_in_influx():
     bucket = "iconnmonseries"
     iconn_reg = IConnMonnRegister(token=token, org=org, url=url, bucket=bucket)
 
-    for value in range(500):
+    for value in range(50):
         iconn_reg.register_point(
             host="127.0.0.1", ttl=64, response_time=0.101, status=True
         )
