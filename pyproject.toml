@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "iconnmon"
+version = "0.1.0"
+description = "A tool to monitor and log internet connectivity"
+authors = ["Carsten Skov <carsten@simcax.dk>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+influxdb = "^5.3.1"
+shell = "^1.0.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+black = "^23.10.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
