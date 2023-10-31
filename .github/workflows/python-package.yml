@@ -47,7 +47,7 @@ jobs:
         sudo cp influx /usr/local/bin/
     - name: Get an access token
       run: |
-        influx config create --config-name <config-name> \
+        influx config create --config-name influx-config \
           --host-url http://localhost:8086 \
           --org iconnmon \
           --token ${{ secrets.INFLUX_TOKEN }}\
