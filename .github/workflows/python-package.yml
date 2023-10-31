@@ -65,7 +65,8 @@ jobs:
     services:
       influx:
         image: influxdb:2.7.3
-        ports: 8086:8086
+        ports: 
+          - 8086:8086
         env:
           DOCKER_INFLUXDB_INIT_MODE: setup
           DOCKER_INFLUXDB_INIT_USERNAME: ${{ secrets.INFLUX_USERNAME }}
