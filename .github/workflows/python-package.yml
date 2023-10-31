@@ -52,7 +52,7 @@ jobs:
           --org iconnmon \
           --token ${{ secrets.INFLUX_TOKEN }}\
           --active
-        export INFLUXDB_TOKEN)$(influx auth create \
+        export INFLUXDB_TOKEN=$(influx auth create \
         --all-access \
         --host http://localhost:8086 \
         --org iconnmon \
