@@ -40,11 +40,11 @@ jobs:
         poetry run black --check .
     - name: Install influx cli
       run: |
-        apt update
-        apt install -y wget
+        sudo apt update
+        sudo apt install -y wget
         wget https://dl.influxdata.com/influxdb/releases/influxdb2-client-2.7.3-linux-amd64.tar.gz
         tar xvzf influxdb2-client-2.7.3-linux-amd64.tar.gz
-        cp influxdb2-client-2.7.3-linux-amd64/influx /usr/local/bin/
+        sudo cp influxdb2-client-2.7.3-linux-amd64/influx /usr/local/bin/
     - name: Get an access token
       run: |
         influx config create --config-name <config-name> \
