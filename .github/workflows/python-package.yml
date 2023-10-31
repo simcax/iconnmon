@@ -48,13 +48,13 @@ jobs:
     - name: Get an access token
       run: |
         influx config create --config-name influx-config \
-          --host-url http://localhost:8086 \
+          --host-url http://influx:8086 \
           --org iconnmon \
           --token ${{ secrets.INFLUX_TOKEN }}\
           --active
         echo "INFLUXDB_TOKEN=$(influx auth create \
         --all-access \
-        --host http://localhost:8086 \
+        --host http://influx:8086 \
         --org iconnmon \
         --token ${{ secrets.INFLUX_TOKEN }} | sed -n '2 p'| awk '{print $2}')" >> $GITHUB_ENV
         echo $INFLUXDB_TOKEN
