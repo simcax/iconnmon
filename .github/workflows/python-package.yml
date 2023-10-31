@@ -44,7 +44,7 @@ jobs:
         sudo apt install -y wget
         wget https://dl.influxdata.com/influxdb/releases/influxdb2-client-2.7.3-linux-amd64.tar.gz
         tar xvzf influxdb2-client-2.7.3-linux-amd64.tar.gz
-        sudo cp influxdb2-client-2.7.3-linux-amd64/influx /usr/local/bin/
+        sudo cp influx /usr/local/bin/
     - name: Get an access token
       run: |
         influx config create --config-name <config-name> \
