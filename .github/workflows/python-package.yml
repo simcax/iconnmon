@@ -52,11 +52,12 @@ jobs:
           --org iconnmon \
           --token ${{ secrets.INFLUX_TOKEN }}\
           --active
-        export INFLUXDB_TOKEN=$(influx auth create \
+        echo "INFLUXDB_TOKEN=$(influx auth create \
         --all-access \
         --host http://localhost:8086 \
         --org iconnmon \
-        --token ${{ secrets.INFLUX_TOKEN }} | sed -n '2 p'| awk '{print $2}')
+        --token ${{ secrets.INFLUX_TOKEN }} | sed -n '2 p'| awk '{print $2}')" >> $GITHUB_ENV
+        echo $INFLUXDB_TOKEN
     - name: Test with pytest
       run: |
         poetry run pytest
