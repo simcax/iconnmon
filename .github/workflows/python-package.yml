@@ -38,6 +38,25 @@ jobs:
       run: |
         # Stop if black would have changed something in the files
         poetry run black --check .
+    - name: Install influx cli
+      run: |
+        apt update
+        apt install -y wget
+        wget https://dl.influxdata.com/influxdb/releases/influxdb2-client-2.7.3-linux-amd64.tar.gz
+        tar xvzf influxdb2-client-2.7.3-linux-amd64.tar.gz
+        cp influxdb2-client-2.7.3-linux-amd64/influx /usr/local/bin/
+    - name: Get an access token
+      run: |
+        influx config create --config-name <config-name> \
+          --host-url http://localhost:8086 \
+          --org iconnmon \
+          --token ${{ secrets.INFLUX_TOKEN }}\
+          --active
+        export INFLUXDB_TOKEN)$(influx auth create \
+        --all-access \
+        --host http://localhost:8086 \
+        --org iconnmon \
+        --token ${{ secrets.INFLUX_TOKEN }} | sed -n '2 p'| awk '{print $2}')
     - name: Test with pytest
       run: |
         poetry run pytest
